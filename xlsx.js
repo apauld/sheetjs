@@ -21215,7 +21215,7 @@ function make_json_row(sheet, r, R, cols, header, hdr, dense, o) {
 				else if(raw && v === null) row[hdr[C]] = null;
 				else continue;
 			} else {
-				row[hdr[C]] = raw || (o.rawNumbers && val.t == "n") ? v : format_cell(val,v,o);
+				row[hdr[C]] = (raw && val.t != 'd') || (o.rawNumbers && val.t == "n") ? v : format_cell(val,v,o);
 			}
 			if(v != null) isempty = false;
 		}

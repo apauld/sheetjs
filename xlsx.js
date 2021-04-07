@@ -21216,8 +21216,8 @@ function make_json_row(sheet, r, R, cols, header, hdr, dense, o) {
 				else continue;
 			} else {
 				const snRegex = /^([0-9]+[.]?[0-9]*|[0-9]*[.][0-9]+)[eE][+-]?[0-9]+$/;
-                var cell = (val.w && val.w.match(snRegex)) || raw || (o.rawNumbers && val.t == "n") ? v : format_cell(val,v,o);
-                row[hdr[C]] = cell ? cell.replace(/\n/g," ") : cell;
+                v = v ? v.replace(/\n/g," ") : v;
+                row[hdr[C]] = (val.w && val.w.match(snRegex)) || raw || (o.rawNumbers && val.t == "n") ? v : format_cell(val,v,o);
 			}
 			if(v != null) isempty = false;
 		}

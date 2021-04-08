@@ -21217,7 +21217,7 @@ function make_json_row(sheet, r, R, cols, header, hdr, dense, o) {
 			} else {
 				const snRegex = /^([0-9]+[.]?[0-9]*|[0-9]*[.][0-9]+)[eE][+-]?[0-9]+$/;
 				var cell = (val.w && val.w.match(snRegex)) || raw || (o.rawNumbers && val.t == "n") ? v : format_cell(val,v,o);
-                cell = (typeof cell === 'string' || v instanceof String) ? cell.replace(/\n/g," ") : cell;
+                cell = (typeof cell === 'string' || v instanceof String) ? cell.replace(/\r\n/g," ").replace(/\n/g," ").replace(/\r/g," ") : cell;
                 row[hdr[C]] = cell;
             }
 			if(v != null) isempty = false;
